@@ -13,7 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'employees-list',
-    loadChildren: () => import('./views/employees-list/employees-list.module').then( m => m.EmployeesListPageModule)
+    loadChildren: () => import('./views/employees-list/employees-list.module').then(m => m.EmployeesListPageModule)
+  },
+  {
+    path: 'employee-profile/:id',
+    loadChildren: () => import('./views/employee-profile/employee-profile.module').then(m => m.EmployeeProfilePageModule)
   },
 ];
 
