@@ -15,10 +15,14 @@ export class EmployeeService {
     position: '',
     salary: 0,
   };
-  employees!: Employee[] | any;
+  employees!: Employee[];
   constructor(private http: HttpClient) { }
 
   getEmployees() {
-    return this.http.get(this.urlApi);
+    return this.http.get<Employee[]>(this.urlApi);
+  }
+
+  getEmployee(id: string) {
+    return this.http.get<Employee>(`${this.urlApi}/${id}`);
   }
 }

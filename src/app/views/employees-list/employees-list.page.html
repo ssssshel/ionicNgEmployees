@@ -9,7 +9,10 @@
 
 <ion-content fullscreen="" [fullscreen]="true">
   <ion-list>
-    <ion-item *ngFor="let employee of employeeService.employees">
+    <ion-item
+      *ngFor="let employee of employeeService.employees"
+      [routerLink]="[employee._id]"
+    >
       <ion-label>{{employee.name}}</ion-label>
       <p>{{employee.position}}</p>
     </ion-item>

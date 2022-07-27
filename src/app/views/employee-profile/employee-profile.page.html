@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>employee-profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="employees-list"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Información empleado</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [ngSwitch]="employeeService.selectedEmployee">
+  <ion-list>
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <p>{{employeeService.selectedEmployee.name}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Oficina</ion-label>
+      <p>{{employeeService.selectedEmployee.office}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Puesto</ion-label>
+      <p>{{employeeService.selectedEmployee.position}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-label>Salario</ion-label>
+      <p>USD {{employeeService.selectedEmployee.salary}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>

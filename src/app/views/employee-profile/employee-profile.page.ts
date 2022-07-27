@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee-profile',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employee-profile.page.scss'],
 })
 export class EmployeeProfilePage implements OnInit {
+  profileId: string;
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    public employeeService: EmployeeService
+  ) { }
 
   ngOnInit() {
+    this.profileId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getEmployeeById(this.profileId);
   }
 
+  getEmployeeById(id: string) {
+    return this.employeeService.getEmployee(id).subscribe(res => this.employeeService.selectedEmployee = res, err => console.log(err));
+  }
 }
