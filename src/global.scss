@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.employeeOptions{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.employeeOption{
+  width: 45%
+}
