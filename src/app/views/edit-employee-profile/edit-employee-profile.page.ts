@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Employee } from '../../models/Employee';
 import { EmployeeService } from '../../services/employee.service';
@@ -16,12 +16,12 @@ export class EditEmployeeProfilePage implements OnInit {
   profileId: string;
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     public employeeService: EmployeeService
   ) { }
 
   ngOnInit() {
-    // this.profileId = this.activatedRoute.snapshot.paramMap.get('id');
-    // this.getEmployeeById(this.profileId);
+    this.profileId = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   editEmployee(form: NgForm) {
@@ -33,7 +33,9 @@ export class EditEmployeeProfilePage implements OnInit {
     }
   }
 
-  resetForm(form: NgForm) {
-    form.reset(this.employeeService.selectedEmployee);
+  cancelForm() {
+    if (confirm('Exit?')) {
+      this.router.navigate([`/employees-list/${this.profileId}`]);
+    }
   }
 }

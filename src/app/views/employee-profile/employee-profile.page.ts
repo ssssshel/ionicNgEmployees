@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Employee } from 'src/app/models/Employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -13,6 +13,7 @@ export class EmployeeProfilePage implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     public employeeService: EmployeeService
   ) { }
 
@@ -27,5 +28,16 @@ export class EmployeeProfilePage implements OnInit {
 
   editEmployee(employee: Employee) {
     this.employeeService.selectedEmployee = employee;
+  }
+
+  deleteEmployee(id: string) {
+    if (confirm('Are you sure you want to delete this employee?')) {
+      return this.employeeService.deleteEmployee(id).subscribe(res => this.delResponse(), err => alert(err));
+    }
+  }
+
+  private delResponse() {
+    alert('Employee has been succesfully deleted');
+    this.router.navigate(['/employees-list']);
   }
 }

@@ -34,6 +34,10 @@ export class EmployeeService {
   updateEmployee(employee: Employee) {
     return this.http.put(`${this.urlApi}/${employee._id}`, employee);
   }
+
+  deleteEmployee(id: string) {
+    return this.http.delete(`${this.urlApi}/${id}`);
+  }
 }
 
 // interface UrlApi { url: 'http://localhost:3000/api/employees' | 'http://localhost:3001/api/employees' }

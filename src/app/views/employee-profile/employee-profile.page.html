@@ -28,6 +28,12 @@
   </ion-list>
   <ion-row class="employeeOptions">
     <ion-button class="employeeOption" routerLink="edit"> Editar </ion-button>
-    <ion-button class="employeeOption" color="danger"> Eliminar </ion-button>
+    <ion-button
+      class="employeeOption"
+      (click)="deleteEmployee(employeeService.selectedEmployee._id)"
+      color="danger"
+    >
+      Eliminar
+    </ion-button>
   </ion-row>
 </ion-content>
