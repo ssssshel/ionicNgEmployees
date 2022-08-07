@@ -46,14 +46,13 @@
       <label for="">
         Salary:
         <input
-          type="text"
+          type="number"
           name="salary"
           [(ngModel)]="employeeService.selectedEmployee.salary"
         />
       </label>
       <div class="employeeOptions">
         <ion-button type="submit" color="danger">Save</ion-button>
-        <!-- cancelarrrrr -->
         <ion-button (click)="cancelForm()">Cancel</ion-button>
       </div>
     </form>

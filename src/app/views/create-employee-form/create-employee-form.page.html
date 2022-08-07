@@ -14,11 +14,6 @@
       #newEmployeeForm="ngForm"
       (ngSubmit)="createEmployee(newEmployeeForm)"
     >
-      <input
-        type="hidden"
-        name="_id"
-        [(ngModel)]="employeeService.selectedEmployee._id"
-      />
       <label for="">
         Full Name:
         <input
@@ -46,7 +41,7 @@
       <label for="">
         Salary:
         <input
-          type="text"
+          type="number"
           name="salary"
           [(ngModel)]="employeeService.selectedEmployee.salary"
         />
