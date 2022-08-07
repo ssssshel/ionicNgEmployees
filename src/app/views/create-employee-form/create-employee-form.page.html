@@ -1,9 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>create-employee-form</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Employee</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div>
+    <form
+      class="form"
+      #newEmployeeForm="ngForm"
+      (ngSubmit)="createEmployee(newEmployeeForm)"
+    >
+      <input
+        type="hidden"
+        name="_id"
+        [(ngModel)]="employeeService.selectedEmployee._id"
+      />
+      <label for="">
+        Full Name:
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="employeeService.selectedEmployee.name"
+        />
+      </label>
+      <label for="">
+        Position:
+        <input
+          type="text"
+          name="position"
+          [(ngModel)]="employeeService.selectedEmployee.position"
+        />
+      </label>
+      <label for="">
+        Office:
+        <input
+          type="text"
+          name="office"
+          [(ngModel)]="employeeService.selectedEmployee.office"
+        />
+      </label>
+      <label for="">
+        Salary:
+        <input
+          type="text"
+          name="salary"
+          [(ngModel)]="employeeService.selectedEmployee.salary"
+        />
+      </label>
+      <div class="employeeOptions">
+        <ion-button type="submit" color="danger">Save</ion-button>
+        <!-- cancelarrrrr -->
+        <ion-button (click)="resetForm(newEmployeeForm)">Reset</ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>
