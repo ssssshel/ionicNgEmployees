@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Employee } from 'src/app/models/Employee';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
@@ -22,5 +23,9 @@ export class EmployeeProfilePage implements OnInit {
 
   getEmployeeById(id: string) {
     return this.employeeService.getEmployee(id).subscribe(res => this.employeeService.selectedEmployee = res, err => console.log(err));
+  }
+
+  editEmployee(employee: Employee) {
+    this.employeeService.selectedEmployee = employee;
   }
 }

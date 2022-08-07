@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { Employee } from 'src/app/models/Employee';
 
@@ -18,7 +18,13 @@ export class EmployeesListPage implements OnInit {
   }
 
   getEmployees() {
-    this.employeeService.getEmployees().subscribe(res => this.employeeService.employees = res, err => console.log(err));
+    return this.employeeService.getEmployees().subscribe(res => this.employeeService.employees = res, err => console.log(err));
   }
 
+  doRefresh(event) {
+    setTimeout(() => {
+      event.target.complete();
+      this.getEmployees();
+    }, 700);
+  }
 }

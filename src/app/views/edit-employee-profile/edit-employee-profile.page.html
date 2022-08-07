@@ -7,4 +7,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <div>
+    <form
+      class="form"
+      #employeeForm="ngForm"
+      (ngSubmit)="editEmployee(employeeForm)"
+    >
+      <input
+        type="hidden"
+        name="_id"
+        [(ngModel)]="employeeService.selectedEmployee._id"
+      />
+      <label for="">
+        Full Name:
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="employeeService.selectedEmployee.name"
+        />
+      </label>
+      <label for="">
+        Position:
+        <input
+          type="text"
+          name="position"
+          [(ngModel)]="employeeService.selectedEmployee.position"
+        />
+      </label>
+      <label for="">
+        Office:
+        <input
+          type="text"
+          name="office"
+          [(ngModel)]="employeeService.selectedEmployee.office"
+        />
+      </label>
+      <label for="">
+        Salary:
+        <input
+          type="text"
+          name="salary"
+          [(ngModel)]="employeeService.selectedEmployee.salary"
+        />
+      </label>
+      <div class="employeeOptions">
+        <ion-button type="submit" color="danger">Save</ion-button>
+        <!-- cancelarrrrr -->
+        <ion-button (click)="resetForm(employeeForm)">Reset</ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

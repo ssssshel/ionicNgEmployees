@@ -33,3 +33,15 @@
 .employeeOption{
   width: 45%
 }
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+.form input{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
